@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ES6 支持函数带有默认参数，就判断 undefined 和 || 的操作：
+        //如果y有实参则实参 没有实参则为10
+        function myFunction(x, y = 10) {
+            // y is 10 if not passed or undefined
+            return x + y;
+        }
+        console.log(myFunction(0, 2)) // 输出 2
+        console.log(myFunction(5)) // 输出 15, y 参数的默认值
+
+
+        //arguments 对象 argument 对象包含了函数调用的参数数组。
+        function findMax() {
+            var i, max = arguments[0];
+            if (arguments.length < 2) return max;
+            for (i = 0; i < arguments.length; i++) {
+                if (arguments[i] > max) {
+                    max = arguments[i];
+                }
+            }
+            return max;
+        }
+    </script>
+</body>
+
+</html>

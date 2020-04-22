@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var pat = /yc/;
+        var str = "my code is name";
+        console.log(pat.test(str));
+        // test 找到返回true否则false
+
+        var pat = /ca/;
+        var str = "my code is name";
+        console.log(pat.exec(str));
+        // "code", index: 3, input: "my code is name" 查找成功返回索引值
+        // 否则return null
+
+        var pat = /is/ig;
+        var str = "my code IS name is good";
+        console.log(str.match(pat));
+        ///pattern/attributes是可选的字符串 常用属性g全局搜索 i区分大小写
+
+        var re = null,
+            i;
+        for (i = 0; i < 10; i++) {
+            re = /[bca]at/g;
+            //bat cat aat
+            console.log(re.test("catastrophe"));
+        }
+        for (i = 0; i < 10; i++) {
+            re = new RegExp("cat", "g");
+            console.log(re.test("catastrophe"));
+        }
+
+        //match
+        var str = "yangdaochao is handsome is gggg";
+        console.log(str.search(/is/ig));
+
+        var str = "1 plus 2 equal 3";
+        console.log(str.match(/\d+/g)); //查找数字
+
+        //replace 字符串替换
+        var str = "yangdaochao is handsome is gggg";
+        console.log(str.replace(/is/ig, "is not"));
+
+        //split 字符串分割
+        var str = "yangdaochao is handsome is gggg";
+        str.split("");
+        str.split(/\s+/);
+
+        //[A-h] 在
+        var str = "asdfghjkl";
+        console.log(str.match(/[a-q]/g));
+
+        //[^a-h] 不在
+        var str = "asdfghjkl";
+        console.log(str.match(/[^a-h]/g));
+
+        //demo驼峰式命名
+        var str = 'border-bottom-cao-ni-ma-color';
+        var strRg = str.replace(/\-[a-z]/g, function(params) {
+            return params.charAt(1).toUpperCase();
+        })
+        console.log(strRg);
+
+        //\d 数字
+        //\D 非数字
+        var str = "1552133ydc0602";
+        console.log(str.match(/\d/g));
+
+        //\b 单词边界
+        var str = "yangdaochao is handsome is gggg";
+        console.log(str.match(/is/ig));
+
+        //\n+ n*0个或多个  n?0/1个 n{x}x个n n{x,}至少x个n
+
+        //判断手机号
+        function checkPhone() {
+            var phone = document.getElementById("phone").value;
+            if (!(/^1[3456789]\d{9}/.test(phone))) {
+                alert("手机号有误，请重输");
+                return false;
+            }
+        }
+
+        //判断字符串由数字和大写字母
+        /*      function numalpha(str) {
+                 var pat = /^[0-9A-Z]*$/;
+                 if (!pat.test(str)) {
+                     alert("有误");
+                     return false;
+                 } else {
+                     alert("正确");
+                     return true;
+                 }
+             }
+             var test = "A94A884Da";
+             numalpha(test); */
+    </script>
+
+    <input type="text" id="phone" onclick="checkPhone()">
+</body>
+
+</html>

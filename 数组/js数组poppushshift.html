@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- unshift()则是在开头添加，从原理就可以知道，unshift()的效率是较低的。
+    原因是，它每添加一个元素，都要把现有元素往下移一个位置。
+    但到底效率差异有多大呢?下面来简单测试一下。 -->
+
+<body>
+    <script>
+        // 常规
+        var myCars = new Array();
+        myCars[0] = "Saab";
+        myCars[1] = "Volvo";
+        myCars[2] = "BMW";
+
+        // 简洁
+        var myCars = new Array("Saab", "Volvo", "BMW");
+
+        // 字面
+        var myCars = ["Saab", "Volvo", "BMW"];
+
+
+        var arr = [1, 2, 3, 4];
+        console.log("arr: " + arr);
+        arr.push(5, 6, 7, 8);
+        console.log("arr: " + arr);
+        arr.pop();
+        console.log("arr: " + arr);
+        arr.shift();
+        console.log("arr: " + arr);
+        arr.unshift(0, 9, 8, 7);
+        console.log("arr: " + arr);
+    </script>
+    <!-- unshift()比push()要慢差不多100倍!因此，平时还是要慎用unshift()，
+    特别是对大数组。那如果一定要达到unshift()的效果，
+    可以借助于Array的reverse()方法，Array的reverse()的方法能够把一个数组反转。
+    先把要放进数组的元素用push()添加，再执行一次reverse()，就达到了unshift()的效果。
+    从运行效果中可以看到，reverse()方法的性能极高，可以放心使用 -->
+
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script id="str string">
+        var str1 = "yang daochao";
+        var subbstr = str1.substr(5, 11);
+        var subbstring = str1.substring(5, 11);
+        console.log("str1:" + str1);
+        console.log("substr:" +
+            subbstr);
+        console.log("substring:" +
+            subbstring);
+    </script>
+
+    <script id="replace">
+        var str1 = "yang daochao daochao";
+        var str = "lin";
+        console.log("replace: " + str1.replace(/daochao/g, str));
+    </script>
+
+    <script id="match search test">
+        var str1 = "yang daochao daochao";
+        console.log("match:" + str1.search(/daochao/ig));
+        console.log("match:" + str1.match(/daochao/ig));
+        console.log(/daochao/g.test(str1));
+    </script>
+
+    <script id="slice">
+        var colors = ["red", "green", "blue"];
+        var removed = colors.splice(0, 1); //删除第一项
+        console.log(colors); //green,blue
+        console.log(removed); //red，返回数组中值包含一项
+
+        removed = colors.splice(1, 0, "yellow", "orange"); //从位置1开始插入两项
+        console.log(colors); //green,yellow,organge,blue
+        console.log(removed); //返回的是一个空数组
+
+        removed = colors.splice(1, 1, "red", "purple"); //插入两项，删除一项
+        console.log(colors); //green,red,purple,orange,blue
+        console.log(removed); //yellow, 返回的数组中只包含一项
+    </script>
+
+    <script id="upperlower">
+        var str1 = "yang DAOchao daochao";
+        console.log(str1.toUpperCase());
+        console.log(str1.toLowerCase());
+    </script>
+
+    <script id="splitjoin">
+        var str = '112254,33445,56699';
+        var s = str.split(',');
+        console.log(s.length);
+        console.log(s[0]);
+        for (var i = 0; i < s.length; i++) {
+            console.log(s[i]);
+        }
+
+        var arr = [4, 5, 34, 3453, 3453, 33, "哈哈哈哈"];
+        var arr2 = arr.join(""); //join(),  join("") join("-")
+        console.log(arr2);
+        console.log(typeof(arr2)); //string
+        console.log(typeof(arr)); //object
+    </script>
+
+    <script id="indexof">
+        var str = "hello world";
+        console.log(str.indexOf("hello")); //====>0
+        console.log(str.indexOf("World")); //====>-1
+        console.log(str.indexOf("world")); //====>6
+        //lastindexof
+
+        /*         search()的参数必须是正则表达式,而indexOf()的参数只是普通的字符串。indexOf()是比search()更加底层的方法。
+                如果只是兑一个具体字符串来茶渣检索，那么使用indexOf()的系统资源消耗更小，效率更高；
+                如果查找具有某些特征的字符串（例如查找以a开头，后面是数字的字符串），
+                那么indexOf()就无能为力，必须要使用正则表达式和search()方法了。 */
+    </script>
+
+    <script id="chatat">
+        //返回指定位置的字符
+        var str = "hello world";
+        console.log(str[1]); //输出结果e     ie7前的浏览器不兼容
+        console.log(str.charAt(0)); //输出结果h　　兼容浏览器
+        console.log(str.charCodeAt(4)); //输出结果111　　返回o字符串的编码
+    </script>
+
+    <script id="reversestring">
+        //字符串翻转
+        var str = "hello123world";
+        var revstr = str.split("").reverse("").join("");
+        document.writeln("字符串反转：" + revstr);
+
+        function reverse(str) {
+            var rstr = "";
+            if (str.length == 0) return null;
+            var i = str.length;
+            while (--i >= 0) {
+                rstr = rstr + str.charAt(i);
+            }
+            return rstr;
+        }
+        var str2 = "1234567890";
+        str2 = reverse(str2);
+        document.writeln(str2);
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id='table11'></div>
+    <script>
+        let row;
+        let cell;
+        for (let index = 0; index < 10; index++) {
+            row = document.createElement('tr');
+            document.getElementById('table11').appendChild(row);
+            for (let j = 0; j < 5; j++) {
+                cell = document.createElement('td');
+                cell.innerText = '1';
+                row.appendChild(cell);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="p1">Hello World!</p>
+    <p id="p2">Hello World!</p>
+    <script>
+        document.getElementById("p2").style.color = "blue";
+        document.getElementById("p2").style.fontFamily = "Arial";
+        document.getElementById("p2").style.fontSize = "larger";
+    </script>
+
+
+    <script>
+        document.write(Date());
+        // 绝对不要在文档 (DOM) 加载完成之后使用 document.write()。这会覆盖该文档。
+    </script>
+
+
+    <h1 id="header" onclick="this.innerHTML='Ooops!'">Old Header</h1>
+    <script>
+        var element = document.getElementById("header");
+        element.innerHTML = "新标题";
+    </script>
+
+    <script>
+        function changetext(id) {
+            id.innerHTML = "Ooops!";
+        }
+    </script>
+    </head>
+
+    <body>
+        <h1 onclick="changetext(this)">点击文本!</h1>
+    </body>
+
+
+    <button id="aaaa" onclick="displayDate()">点这里</button>
+
+    <script>
+        document.querySelector("button").addEventListener("click", function() {
+            alert("aaaaa")
+        });
+        document.getElementById("aaaa").addEventListener("click", changetext);
+    </script>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function cainiao() {
+            window.location.assign("https://www.runoob.com");
+            // location.assign() 方法加载新的文档。
+        }
+
+        function goBack() {
+            window.history.back()
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        /*      window.onload = function runoob() {
+                                                    document.write("菜鸟教程 -- 学的不仅是技术，更是梦想！！！");
+                                                                } */
+
+        //screen
+        console.log(location.hostname);
+        console.log(location.pathname);
+        console.log(location.href);
+        console.log(location.port);
+        console.log(location.protocol);
+        console.log("总高度: " + screen.height);
+        console.log("浏览器名称: " + navigator.appName);
+        console.log("浏览器代号: " + navigator.appCodeName);
+        // appName 又不是内核名，根据 W3C HTML 5 的规范，
+        // navigator 对象的 appName 要么返回 Netscape，要么返回浏览器的全名，这是为了兼容性而考虑的
+        // ！W3C 这样的规定的目的，除了为了兼容性考虑，估计还有缅怀 Netscape 的成分吧
+        // ？毕竟没有 Netscape 就不会有今天互联网的发展了。
+        // 浏览器, JavaScript, SSL, Cookie 等等这些都是 Netscape 发明的。
+    </script>
+    <input type="button" value="c46" onclick="cainiao()">
+    <input type="button" value="返回" onclick="goBack()">
+
+</body>
+
+</html>

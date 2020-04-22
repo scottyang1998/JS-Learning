@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //声明
+        var a;
+        a = 1;
+        console.log(a);
+        let b;
+        b = 12;
+        console.log(b);
+        const c = 123;
+        console.log(c);
+
+
+        //声明前置
+        console.log(e);
+        var e;
+        //underfined
+        func1(); // 输出：我是函数声明
+
+        func2(); // 报错
+
+        console.log(a); // 输出：undefined
+
+        function func1() {
+            console.log("我是函数声明");
+        }
+
+        var func2 = function() {
+            console.log("我是函数表达式");
+        }
+
+        var a = 10;
+    </script>
+
+
+</body>
+
+</html>

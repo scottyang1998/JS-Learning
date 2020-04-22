@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var myArrray = [1, 3, 5, 0, 55, 6, 11];
+        console.log(myArrray.sort()); //0,1,11,3,5,55,6
+        console.log(myArrray.sort(function(a, b) {
+            return a - b
+        })); //0,1,3,5,6,11,55
+        var arr = myArrray.sort(function(a, b) {
+            return b - a
+        });
+        console.log(arr[0]);
+
+        //es6拓展运算符
+        console.log(Math.max(...myArrray));
+
+        var Arrray = [1, 3, 5, 0, 55, 6, 11];
+        for (let i in Arrray) {
+            console.log(i, Arrray[i]);
+        }
+
+        var fruits = ["Banana", "Orange", "Apple", "Mango"];
+        console.log(fruits.sort());
+        console.log(fruits.reverse());
+    </script>
+</body>
+
+</html>

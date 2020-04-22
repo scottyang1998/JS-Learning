@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 对象构造器中是不能添加新的属性的
+
+        function Person(first, last, age, eyecolor) {
+            this.firstName = first;
+            this.lastName = last;
+            this.age = age;
+            this.eyeColor = eyecolor;
+            this.nationality = "English";
+        }
+
+        // Person.nationality = "English";  错误
+        //  prototype 属性就可以给对象的构造函数添加新的属性：
+
+        function Person(first, last, age, eyecolor) {
+            this.firstName = first;
+            this.lastName = last;
+            this.age = age;
+            this.eyeColor = eyecolor;
+        }
+        Person.prototype.nationality = "English";
+
+        // 当然我们也可以使用 prototype 属性就可以给对象的构造函数添加新的方法：
+        Person.prototype.name = function() {
+            return this.firstName + " " + this.lastName;
+        };
+    </script>
+</body>
+
+</html>

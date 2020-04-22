@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        function parseQueryString(argu) {
+            var str = argu.split('?')[1];
+            var result = {};
+            var temp = str.split('&');
+            console.log(temp);
+
+            for (var i = 0; i < temp.length; i++) {
+                var temp2 = temp[i].split('=');
+                console.log(temp2);
+                result[temp2[0]] = temp2[1];
+            }
+            return result;
+
+        }
+        var url = "http://www.taobao.com/index.php?key=123456&name=xiangruding&value=20170308&mid=1830246&token=loyyehkvk";
+        var obj = parseQueryString(url);
+        console.log(obj);
+
+
+        //split[i]
+        var mystr = "www.imooc.com";
+        var str = mystr.split("."); //object
+        var str = mystr.split(".")[1]; //string
+        console.log(typeof(str));
+        console.log(str);
+    </script>
+</body>
+
+</html>

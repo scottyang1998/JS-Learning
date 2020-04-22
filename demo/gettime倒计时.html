@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>原生js 当前时间 倒计时代码</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            text-align: center;
+        }
+        
+        .text {
+            margin-top: 150px;
+            font-size: 18px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+                getMyTime();
+                getMyTime1();
+            }
+            //1.前面补0
+        function p(n) {
+            return n < 10 ? '0' + n : n;
+        }
+        //2.倒计时
+        function getMyTime() {
+            var startDate = new Date();
+            var endDate = new Date('2020/4/17 11:15:00');
+            var countDown = (endDate.getTime() - startDate.getTime()) / 1000;
+            console.log(typeof(countDown));
+            //getTime() 方法可返回距 1970 年 1 月 1 日之间的毫秒数。
+            var day = parseInt(countDown / (24 * 60 * 60));
+            var h = parseInt(countDown / (60 * 60) % 24);
+            var m = parseInt(countDown / 60 % 60);
+            var s = parseInt(countDown % 60);
+            document.getElementById('time').innerHTML = day + '天' + p(h) + '时' + p(m) + '分' + p(s) + '秒';
+            setTimeout('getMyTime()', 500);
+            if (countDown <= 0) {
+                document.getElementById('time').innerHTML = '活动结束';
+            }
+        }
+        //3.当前时间
+        function getMyTime1() {
+            var myDate = new Date();
+            var year = myDate.getFullYear();
+            //使用getFullYear()在IE和FF中都可以正确获取年份：2010 使用js来获取年份都使用：getFullYear()
+            //否则2000年后时间不兼容
+            var month = myDate.getMonth() + 1;
+            var day = myDate.getDate();
+            var week = myDate.getDay();
+            var array = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六', ];
+            var hour = myDate.getHours();
+            var minute = myDate.getMinutes();
+            var second = myDate.getSeconds();
+            document.getElementById('time1').innerHTML = year + '年' + month + '月' + day + '日' + ' ' + array[week] + ' ' + p(hour) + ':' + p(minute) + ':' + p(second);
+            setTimeout('getMyTime1()', 500);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="text">
+        <p>倒计时间：<span id="time"></span></p>
+        <p>当前时间：<span id="time1"></span></p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- appendchild -->
+    <div id="div1">
+        <p id="p1">这是一个段落。</p>
+        <p id="p2">这是另外一个段落。</p>
+        <p></p>
+        <p></p>
+    </div>
+    <script>
+        var para = document.createElement("p");
+        var node = document.createTextNode("这是一个新的段落。");
+        para.appendChild(node);
+        var element = document.getElementById("div1");
+        element.appendChild(para);
+    </script>
+
+
+    <!-- insertBefore -->
+    <div id="div1">
+        <p id="p1">这是一个段落。</p>
+        <p id="p2">这是另外一个段落。</p>
+        <p></p>
+        <p> </p>
+    </div>
+    <script>
+        var para = document.createElement("p");
+        var node = document.createTextNode("这是一个新的段落。");
+        para.appendChild(node);
+        var element = document.getElementById("div1");
+        var child = document.getElementById("p1");
+        element.insertBefore(para, child);
+    </script>
+
+
+    <!-- removechild -->
+    <div id="div1">
+        <p id="p1">这是一个段落。</p>
+        <p id="p2">这是另外一个段落。</p>
+        <p></p>
+        <p> </p>
+    </div>
+    <script>
+        var parent = document.getElementById("div1");
+        var child = document.getElementById("p1");
+        parent.removeChild(child);
+    </script>
+
+
+    <!-- replacechild -->
+    <div id="div1">
+        <p id="p1">这是一个段落。</p>
+        <p id="p2">这是另外一个段落。</p>
+    </div>
+    <script>
+        var para = document.createElement("p");
+        var node = document.createTextNode("这是一个新的段落。");
+        para.appendChild(node);
+        var parent = document.getElementById("div1");
+        var child = document.getElementById("p1");
+        parent.replaceChild(para, child);
+    </script>
+</body>
+
+</html>
