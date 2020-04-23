@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .red {
+            background-color: red;
+        }
+        
+        .green {
+            background-color: green;
+        }
+        
+        .dark {
+            background-color: darkgray;
+        }
+        
+        .yellow {
+            background-color: yellow;
+        }
+        
+        .box {
+            width: 1000px;
+            height: 400px;
+            border: 1px solid blue;
+            margin: 50px auto;
+            position: relative;
+        }
+        
+        .box .list {
+            height: 400px;
+            width: 1000px;
+            border: 1px solid orange;
+            position: relative;
+            /* 相对定位 */
+            transition: left 0.3s linear;
+            /* 过渡 慢慢一定 */
+        }
+        
+        .box .list li {
+            width: 1000px;
+            height: 400px;
+            text-align: center;
+            line-height: 400px;
+            font-size: 60px;
+            color: #fff;
+            position: absolute;
+            opacity: 0;
+        }
+        
+        .box .btn {
+            display: block;
+            width: 30px;
+            height: 100px;
+            position: absolute;
+            top: 50%;
+            margin-top: -50px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 40px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .box .prev {
+            left: 0;
+        }
+        
+        .box .next {
+            right: 0;
+        }
+        
+        .box .btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .box .page {
+            width: 100%;
+            height: 20px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            text-align: center;
+        }
+        
+        .box .page li {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #000;
+            display: inline-block;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        
+        .box .page .on {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 最大的容器 -->
+    <div class="box">
+        <!-- 移动的容器 -->
+        <ul class="list">
+            <!-- 每个滑块 -->
+            <li class="red">1</li>
+            <li class="green">2</li>
+            <li class="dark">3</li>
+            <li class="yellow">4</li>
+        </ul>
+        <!-- 左右按钮 -->
+        <a class="btn prev">&lt;</a>
+        <a class="btn next">&gt;</a>
+        <!-- 分页器 -->
+        <ol class="page">
+            <li class="on"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+
+
+    <script type="text/javascript">
+        // 1.dom节点
+        var box = document.querySelector(".box"); //找到容器盒子
+        var list = document.querySelector(".list"); //找到移动容器
+        var len = document.querySelectorAll(".list li").length; //滑块的个数
+        var page = document.querySelector(".page"); //找到分页容器
+        var pageli = document.querySelectorAll(".page li"); //找到所有的分页下标
+        var ltBtn = document.querySelector(".prev");
+        var rtBtn = document.querySelector(".next");
+
+        // 2.移动 规定当前的位置【显示当前图片的序号】
+        var curIndex = 0;
+
+        // 3.左右边按钮点击事件
+        rtBtn.onclick = function() {
+            curIndex++;
+            if (curIndex >= len) {
+                curIndex = 0;
+            }
+            change(curIndex);
+        }
+        ltBtn.onclick = function() {
+            curIndex--;
+            if (curIndex <= -1) {
+                curIndex = len - 1;
+            }
+            change(curIndex);
+        }
+
+        //4.分页下标点击切换图片事件
+        for (var i = 0; i < pageli.length; i++) {
+            pageli[i].setAttribute("data-index", i); //给每个li加上序号
+            pageli[i].onclick = function() {
+                //console.log(this.getAttribute("data-index"))
+                curIndex = this.getAttribute("data-index");
+                change(curIndex);
+            }
+        }
+
+        //5.装切换效果函数
+        function change(index) {
+            //ul移动
+            list.style.left = -liWidth * index + "px";
+            //处理下标对应
+            for (var j = 0; j < pageli.length; j++) {
+                pageli[j].classList.remove("on");
+            }
+            pageli[curIndex].classList.add("on");
+
+        }
+
+        //6.自动播放
+        var timer = setInterval(function() {
+            rtBtn.onclick();
+        }, 3000)
+
+        //7.鼠标移入 定时器停止 否则启动
+        box.onmouseenter = function() {
+            clearInterval(timer);
+        }
+        box.onmouseleave = function() {
+            timer = setInterval(function() {
+                rtBtn.onclick();
+            }, 3000)
+        }
+    </script>
+</body>
+
+</html>
